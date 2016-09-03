@@ -14,7 +14,7 @@ export default class MapView {
 		this.rootEl.className = 'map';
 		parentEl.appendChild(this.rootEl);
 
-		let remoteSrc = API + '?key=' + API_KEY;// + '&callback=app.initMap%28%29';
+		let remoteSrc = API; // + '?key=' + API_KEY;// + '&callback=app.initMap%28%29';
 		let remote = document.createElement('script');
 				remote.onload = this.initGoogleMap.bind(this, this.rootEl);
 				remote.src = remoteSrc;
@@ -26,10 +26,32 @@ export default class MapView {
 
 	initGoogleMap(parentEl) {
 
-		this.map = new google.maps.Map(parentEl, {
-			center: {lat: -34.397, lng: 150.644},
-			scrollwheel: false,
-			zoom: 8
+//		this.map = new google.maps.Map(parentEl, {
+//			center: {lat: -34.397, lng: 150.644},
+//			scrollwheel: false,
+//			zoom: 8
+//		});
+
+		var geocoder = new google.maps.Geocoder();
+		var latlng = new google.maps.LatLng(0,0);
+		var mapOptions = {
+			zoom: 15,
+			center: latlng,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+
+		this.map = new google.maps.Map(parentEl, mapOptions);
+
+		geocoder.geocode( { 'address': POSTCODE}, (results, status) => {
+			if (status == google.maps.GeocoderStatus.OK) {
+				this.map.setCenter(results[0].geometry.location);
+				var marker = new google.maps.Marker({
+						map: this.map,
+						position: results[0].geometry.location
+				});
+			} else {
+				alert('Geocode was not successful for the following reason: ' + status);
+			}
 		});
 
 	}
