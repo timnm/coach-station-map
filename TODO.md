@@ -1,0 +1,1 @@
+- return a promise from GoogleMap to handle errors
