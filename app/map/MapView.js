@@ -1,3 +1,5 @@
+import GoogleMap from '../common/GoogleMap';
+
 /*global google */
 const API = 'https://maps.googleapis.com/maps/api/js';
 
@@ -14,14 +16,17 @@ export default class MapView {
 		this.rootEl.className = 'map';
 		parentEl.appendChild(this.rootEl);
 
-		let remoteSrc = API; // + '?key=' + API_KEY;// + '&callback=app.initMap%28%29';
-		let remote = document.createElement('script');
-				remote.onload = this.initGoogleMap.bind(this, this.rootEl);
-				remote.src = remoteSrc;
-				remote.setAttribute('async', true);
-				remote.setAttribute('defer', true);
+//		let remoteSrc = API; // + '?key=' + API_KEY;// + '&callback=app.initMap%28%29';
+//		let remote = document.createElement('script');
+//				remote.onload = this.initGoogleMap.bind(this, this.rootEl);
+//				remote.src = remoteSrc;
+//				remote.setAttribute('async', true);
+//				remote.setAttribute('defer', true);
+//
+//		document.body.appendChild(remote);
 
-		document.body.appendChild(remote);
+		this.gMap = new GoogleMap(this.rootEl, POSTCODE);
+
 	}
 
 	initGoogleMap(parentEl) {
