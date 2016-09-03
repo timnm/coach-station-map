@@ -1,11 +1,5 @@
 import GoogleMap from '../common/GoogleMap';
-
-/*global google */
-const API = 'https://maps.googleapis.com/maps/api/js';
-
-const POSTCODE = 'WC1E 7BL';
-const DISTANCE = '3';
-const API_KEY = '';
+import {POST_CODE} from '../core/config';
 
 export default class MapView {
 
@@ -17,6 +11,6 @@ export default class MapView {
 		parentEl.appendChild(this.rootEl);
 
 		// init the Google map //
-		this.gMap = new GoogleMap(this.rootEl, POSTCODE);
+		this.gMap = new GoogleMap(this.rootEl, POST_CODE);
 	}
 }
