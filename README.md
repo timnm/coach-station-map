@@ -7,6 +7,7 @@ npm install
 
 ## To run the dev server
 npm start
+navigate to http://localhost:8080/
 
 ## To build 
 npm build
