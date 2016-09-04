@@ -1,5 +1,6 @@
 import MapView from '../map/MapView';
 import CoachListView from '../coach-list/CoachListView';
+import ShellController from './ShellController';
 
 export default class ShellView {
 
@@ -10,11 +11,15 @@ export default class ShellView {
 		this.rootEl.classList = 'shell o-grid o-grid--small-full o-grid--medium-full o-grid--large-fit o-grid--no-gutter';
 		parentEl.appendChild(this.rootEl);
 
-		this.list = new CoachListView(this.rootEl);
+		this.controller = new ShellController(this);
+	}
 
-		this.map = new MapView(this.rootEl);
+	addCoachListView() {
+		this.listView = new CoachListView(this.rootEl);
+	}
 
-
+	addMapView() {
+		this.mapView = new MapView(this.rootEl);
 	}
 
 }
