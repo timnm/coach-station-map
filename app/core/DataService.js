@@ -19,8 +19,6 @@ export class DataService {
 
 			let url = API + 'postcode?postcode=' + postCode + '&distance=' + distance;
 
-			console.log(url);
-
 			let request = new XMLHttpRequest();
 			request.open('GET', url);
 			request.onload = function() {
