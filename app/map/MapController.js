@@ -16,8 +16,8 @@ export default class MapController {
 		this.view.addGoogleMap(POST_CODE);
 	}
 
-	addData(stations) {
-
+	addStations(stations) {
+		this.view.addStations(stations);
 	}
 
 }

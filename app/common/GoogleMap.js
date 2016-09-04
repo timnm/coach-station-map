@@ -29,11 +29,12 @@ export default class GoogleMap {
 	}
 
 	initMap(parentEl, postCode) {
+		this.postCode = postCode;
 		// geocoder enables map from postcode, markers etc //
-		let geocoder = new google.maps.Geocoder();
+		this.geocoder = new google.maps.Geocoder();
 		let latlng = new google.maps.LatLng(0,0);
 		let mapOptions = {
-			zoom: 15,
+			zoom: 13,
 			center: latlng,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
@@ -42,13 +43,19 @@ export default class GoogleMap {
 		this.map = new google.maps.Map(parentEl, mapOptions);
 
 		// center on postcode and add marker //
-		geocoder.geocode( { 'address': postCode}, (results, status) => {
+		this.geocoder.geocode( { 'address': postCode}, (results, status) => {
 
 			if (status == google.maps.GeocoderStatus.OK) {
 				this.map.setCenter(results[0].geometry.location);
-				var marker = new google.maps.Marker({
+				console.log(results[0].geometry.location.lat);
+				let marker = new google.maps.Marker({
 						map: this.map,
-						position: results[0].geometry.location
+						position: results[0].geometry.location,
+						 icon: {
+							path: google.maps.SymbolPath.CIRCLE,
+							scale: 10
+						},
+
 				});
 			} else {
 				// errors //

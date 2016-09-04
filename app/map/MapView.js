@@ -22,6 +22,6 @@ export default class MapView {
 	}
 
 	addStations(stations) {
-
+		this.gMap.addStations(stations);
 	}
 }
