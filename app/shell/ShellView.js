@@ -16,10 +16,12 @@ export default class ShellView {
 
 	addCoachListView() {
 		this.listView = new CoachListView(this.rootEl);
+		return this.listView;
 	}
 
 	addMapView() {
 		this.mapView = new MapView(this.rootEl);
+		return this.mapView;
 	}
 
 }
