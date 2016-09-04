@@ -12,6 +12,7 @@ export default class MapView {
 		parentEl.appendChild(this.rootEl);
 
 		this.controller = new MapController(this);
+		this.controller.init();
 	}
 
 	addGoogleMap(postCode) {

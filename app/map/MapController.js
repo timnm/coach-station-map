@@ -8,19 +8,33 @@ export default class MapController {
 		console.log('MapController', view);
 
 		this.view = view;
+	}
 
-		// init the Google map //
+	init() {
+		this.addGoogleMap();
+		this.getCoachStations();
+	}
+
+	addGoogleMap() {
 		this.view.addGoogleMap(POST_CODE);
+	}
 
-		// get coach stations //
-		DataService.getCoachStations(POST_CODE, DISTANCE)
-		.then(function(results) {
-			console.log(results);
+	getCoachStations() {
+		return DataService.getCoachStations(POST_CODE, DISTANCE)
+		.then((results) => {
+			this.gotCoachStations(results);
 		})
-		.catch(function(error) {
-			console.log(error);
+		.catch((error) => {
+			this.coachStationsError(error);
 		});
+	}
 
+	gotCoachStations(stations) {
+		console.log('gotCoachStations');
+	}
+
+	coachStationsError(error) {
+		console.log('coachStationsError', error);
 	}
 
 }
