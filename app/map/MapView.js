@@ -8,7 +8,7 @@ export default class MapView {
 		console.log('MapView', parentEl);
 
 		this.rootEl = document.createElement('div');
-		this.rootEl.className = 'map';
+		this.rootEl.classList = 'map o-grid__cell';
 		parentEl.appendChild(this.rootEl);
 
 		this.controller = new MapController(this);
