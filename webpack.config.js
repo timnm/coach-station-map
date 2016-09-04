@@ -1,3 +1,5 @@
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
 
 	context: __dirname + "/app",
@@ -47,7 +49,9 @@ module.exports = {
 	},
 
 	plugins: [
-
+		new ExtractTextPlugin('style.css', {
+				allChunks: true
+		})
 	],
 
 	resolve: {
