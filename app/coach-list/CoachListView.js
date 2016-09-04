@@ -1,3 +1,5 @@
+import CoachListController from './CoachListController';
+
 export default class CoachListView {
 
 	constructor(parentEl) {
@@ -12,9 +14,11 @@ export default class CoachListView {
 		this.title.classList = 'c-heading c-heading--large';
 		this.rootEl.appendChild(this.title);
 
-//
-//		this.controller = new MapController(this);
-//		this.controller.init();
+
+		this.controller = new CoachListController(this);
+		this.controller.init();
+
+		return this.controller;
 	}
 
 

@@ -1,3 +1,5 @@
+import {POST_CODE} from '../core/config';
+
 export default class MapController {
 
 	constructor(view) {
@@ -8,7 +10,6 @@ export default class MapController {
 
 	init() {
 		this.addGoogleMap();
-		this.getCoachStations();
 	}
 
 	addGoogleMap() {

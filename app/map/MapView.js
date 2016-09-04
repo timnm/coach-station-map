@@ -13,6 +13,8 @@ export default class MapView {
 
 		this.controller = new MapController(this);
 		this.controller.init();
+
+		return this.controller;
 	}
 
 	addGoogleMap(postCode) {

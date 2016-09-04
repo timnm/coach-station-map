@@ -10,11 +10,12 @@ export default class ShellController {
 		this.init();
 	}
 
-	init() {
-		this.view.addCoachListView();
-		this.view.addMapView();
 
-		getCoachStations()
+	init() {
+		this.listController = this.view.addCoachListView();
+		this.mapController = this.view.addMapView();
+
+		this.getCoachStations();
 	}
 
 
@@ -28,9 +29,11 @@ export default class ShellController {
 		});
 	}
 
+
 	gotCoachStations(stations) {
 		console.log('gotCoachStations');
 	}
+
 
 	coachStationsError(error) {
 		console.log('coachStationsError', error);

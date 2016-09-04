@@ -15,13 +15,11 @@ export default class ShellView {
 	}
 
 	addCoachListView() {
-		this.listView = new CoachListView(this.rootEl);
-		return this.listView;
+		return new CoachListView(this.rootEl);
 	}
 
 	addMapView() {
-		this.mapView = new MapView(this.rootEl);
-		return this.mapView;
+		return new MapView(this.rootEl);
 	}
 
 }
