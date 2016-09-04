@@ -1,4 +1,4 @@
-import MapService from './MapService';
+import DataService from '../core/DataService';
 import {POST_CODE} from '../core/config';
 import {DISTANCE} from '../core/config';
 
@@ -9,13 +9,12 @@ export default class MapController {
 		console.log('MapController', view);
 
 		this.view = view;
-		this.service = new MapService();
 
 		// init the Google map //
 		this.view.addGoogleMap(POST_CODE);
 
 		// get coach stations //
-		this.service.getCoachStations(POST_CODE, DISTANCE)
+		DataService.getCoachStations(POST_CODE, DISTANCE)
 		.then(function(results) {
 			console.log(results);
 		})

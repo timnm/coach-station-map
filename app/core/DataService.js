@@ -5,13 +5,13 @@ const api = 'https://data.gov.uk/data/api/service/transport/naptan_coach_station
  * within a given distance
  */
 
-export default class MapService {
+export default class DataService {
 
 	constructor() {
 		console.log('MapService');
 	}
 
-	getCoachStations(postCode, distance) {
+	static getCoachStations(postCode, distance) {
 		return new Promise(function(resolve, reject) {
 
 			let url = api + 'postcode?postcode=' + postCode + '&distance=' + distance;
