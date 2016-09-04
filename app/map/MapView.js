@@ -1,4 +1,4 @@
-import GoogleMap from '../common/GoogleMap';
+import CoachMap from './CoachMap';
 import MapController from './MapController';
 
 
@@ -18,6 +18,10 @@ export default class MapView {
 	}
 
 	addGoogleMap(postCode) {
-		this.gMap = new GoogleMap(this.rootEl, postCode);
+		this.gMap = new CoachMap(this.rootEl, postCode);
+	}
+
+	addStations(stations) {
+
 	}
 }

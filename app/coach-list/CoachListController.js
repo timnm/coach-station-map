@@ -16,5 +16,10 @@ export default class CoachListController {
 	}
 
 
+	addData(stations) {
+
+	}
+
+
 
 }

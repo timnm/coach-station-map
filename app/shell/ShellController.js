@@ -32,6 +32,8 @@ export default class ShellController {
 
 	gotCoachStations(stations) {
 		console.log('gotCoachStations');
+		this.listController.addData(stations.result);
+		this.mapController.addData(stations.result);
 	}
 
 
