@@ -1,6 +1,5 @@
-import DataService from '../core/DataService';
-import {POST_CODE} from '../core/config';
-import {DISTANCE} from '../core/config';
+import {DataService} from '../core/DataService';
+import {POST_CODE, DISTANCE} from '../core/config';
 
 
 export default class MapController {
