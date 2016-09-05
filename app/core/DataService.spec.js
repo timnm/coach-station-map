@@ -18,7 +18,6 @@ describe('MapService', () => {
 
 	describe('getCoachStations', () => {
 
-
 		beforeEach(function() {
       jasmine.Ajax.install();
     });
@@ -40,14 +39,14 @@ describe('MapService', () => {
 		});
 
 
-		it('should confirm a successful call', function(done) {
+		it('should return a list of stations', function(done) {
 
 			var getCS = DataService.getCoachStations(POST_CODE, DISTANCE);
 
 			jasmine.Ajax.requests.mostRecent().respondWith(mockAjaxSuccess);
 
-			getCS.then((result)=>{
-				expect(result.success).toEqual(true);
+			getCS.then((stations)=>{
+				expect(stations.length).toBeGreaterThan(0);
 				done();
 			});
 
