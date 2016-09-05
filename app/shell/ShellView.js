@@ -12,7 +12,7 @@ export default class ShellView {
 		parentEl.appendChild(this.rootEl);
 
 		this.leftColWrapper = document.createElement('div');
-		this.leftColWrapper.classList = 'left-col-wrapper o-grid__cell  o-grid__cell--width-20 o-grid__cell--width-100@small o-grid__cell--width-20@medium';
+		this.leftColWrapper.classList = 'left-col-wrapper o-grid__cell  o-grid__cell--width-20 o-grid__cell--width-100@small o-grid__cell--width-20@medium o-grid__cell--width-20@large';
 
 		this.leftCol = document.createElement('div');
 		this.leftCol.classList = 'left-col o-grid  o-grid--wrap o-grid--no-gutter';

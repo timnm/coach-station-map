@@ -36,10 +36,31 @@ export default class GoogleMap {
 		let mapOptions = {
 			zoom: 13,
 			center: latlng,
-			mapTypeId: google.maps.MapTypeId.ROADMAP
-		};
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			styles: [
+				{
+					featureType: 'all',
+					stylers: [
+						{ saturation: -80 }
+					]
+				},{
+					featureType: 'road.arterial',
+					elementType: 'geometry',
+					stylers: [
+						{ hue: '#00ffee' },
+						{ saturation: 50 }
+					]
+				},{
+					featureType: 'poi.business',
+					elementType: 'labels',
+					stylers: [
+						{ visibility: 'off' }
+					]
+				}
+			]
+};
 
-		// init the map //
+// init the map //
 		this.map = new google.maps.Map(parentEl, mapOptions);
 
 		// center on postcode and add marker //
