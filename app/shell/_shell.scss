@@ -12,5 +12,36 @@ body {
 
 
 .title {
-	background: red;
+	//background: #DDD;
+	//color: white;
+	background-color: rgba(221, 221, 221, 0.5)
 }
+
+// large breakpoint //
+@media screen and (min-width: 64em) {
+
+	.title {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		top: 0;
+		z-index: 99;
+
+		.c-heading {
+			text-align: center;
+			font-weight: bold;
+			padding: 0.5em 0;
+		}
+	}
+}
+
+// med breakpoint //
+@media screen and (min-width: 48em) {
+
+}
+
+// small breakpoint //
+@media screen and (min-width: 30em) {
+
+}
+
