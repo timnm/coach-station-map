@@ -21,11 +21,11 @@ export default class ShellController {
 
 	getCoachStations() {
 		return DataService.getCoachStations(POST_CODE, DISTANCE)
-		.then((results) => {
-			this.gotCoachStations(results.result);
+		.then((stations) => {
+			return this.gotCoachStations(stations);
 		})
 		.catch((error) => {
-			this.coachStationsError(error);
+			return this.coachStationsError(error);
 		});
 	}
 
@@ -33,6 +33,7 @@ export default class ShellController {
 	gotCoachStations(stations) {
 		console.log('gotCoachStations');
 		this.listController.addStations(stations);
+		this.listController.view.rootEl.addEventListener('click', this.onStationClick.bind(this), false);
 		this.mapController.addStations(stations);
 	}
 
@@ -41,6 +42,10 @@ export default class ShellController {
 		console.log('coachStationsError', error);
 	}
 
+
+	onStationClick(evt) {
+		console.log(evt.target);
+	}
 
 
 }

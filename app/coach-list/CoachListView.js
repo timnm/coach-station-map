@@ -1,5 +1,7 @@
 import CoachListController from './CoachListController';
 
+const STATION_CLICKED = 'CoachListController station clicked';
+
 export default class CoachListView {
 
 	constructor(parentEl) {
@@ -22,11 +24,16 @@ export default class CoachListView {
 	addStations(_stations) {
 		this.stations = _stations;
 
-		let listTemplate = `${this.stations.map(station => `<li><button class="c-button c-button--block c-button--small">${station.name}</button></li>`).join('\n      ')}`;
+		let listTemplate = `${this.stations.map(station => `<li><a class="c-button c-button--primary c-button--ghost c-button--block c-button--medium" id="${station.nationalcoachcode}">${station.name}</a></li>`).join('\n      ')}`;
 
 		this.list = document.createElement('ul');
 		this.list.innerHTML = listTemplate;
 		this.rootEl.appendChild(this.list);
+
+		//this.list.addEventListener('click', this.onStationClick.bind(this), false);
+	}
+
+	onStationClick(evt) {
 
 	}
 
