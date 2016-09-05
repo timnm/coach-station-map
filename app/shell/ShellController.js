@@ -2,30 +2,28 @@ import {DataService} from '../core/DataService';
 import {POST_CODE, DISTANCE} from '../core/config';
 
 export default class ShellController {
+
 	constructor(view) {
 		console.log('ShellController');
 
 		this.view = view;
-
-		this.init();
 	}
 
 
 	init() {
 		this.listController = this.view.addCoachListView();
 		this.mapController = this.view.addMapView();
-
 		this.getCoachStations();
 	}
 
 
 	getCoachStations() {
-		return DataService.getCoachStations(POST_CODE, DISTANCE)
+		DataService.getCoachStations(POST_CODE, DISTANCE)
 		.then((stations) => {
-			return this.gotCoachStations(stations);
+			this.gotCoachStations(stations);
 		})
 		.catch((error) => {
-			return this.coachStationsError(error);
+			this.coachStationsError(error);
 		});
 	}
 

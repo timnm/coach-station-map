@@ -30,6 +30,7 @@ export default class ShellView {
 		this.rootEl.appendChild(this.leftColWrapper);
 
 		this.controller = new ShellController(this);
+		this.controller.init();
 	}
 
 	addCoachListView() {
