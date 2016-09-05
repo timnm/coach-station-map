@@ -23,7 +23,7 @@ export class DataService {
 
 			let url = API + 'postcode?postcode=' + postCode + '&distance=' + distance;
 
-			resolve(mockAjaxSuccess);
+			resolve(JSON.parse(mockAjaxSuccess.responseText));
 
 //			let request = new XMLHttpRequest();
 //			request.open('GET', url);

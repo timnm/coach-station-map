@@ -11,13 +11,9 @@ export default class CoachListController {
 
 	}
 
-	addCoachList(list) {
-
-	}
-
-
-	addData(stations) {
-
+	addStations(stations) {
+		console.log('add stations');
+		this.view.addStations(stations);
 	}
 
 

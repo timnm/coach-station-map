@@ -22,7 +22,7 @@ export default class ShellController {
 	getCoachStations() {
 		return DataService.getCoachStations(POST_CODE, DISTANCE)
 		.then((results) => {
-			this.gotCoachStations(results);
+			this.gotCoachStations(results.result);
 		})
 		.catch((error) => {
 			this.coachStationsError(error);
@@ -32,8 +32,8 @@ export default class ShellController {
 
 	gotCoachStations(stations) {
 		console.log('gotCoachStations');
-		//this.listController.addData(stations.result);
-		this.mapController.addStations(stations.result);
+		this.listController.addStations(stations);
+		this.mapController.addStations(stations);
 	}
 
 

@@ -19,6 +19,16 @@ export default class CoachListView {
 		return this.controller;
 	}
 
+	addStations(_stations) {
+		this.stations = _stations;
+
+		let listTemplate = `${this.stations.map(station => `<li><button class="c-button c-button--block c-button--small">${station.name}</button></li>`).join('\n      ')}`;
+
+		this.list = document.createElement('ul');
+		this.list.innerHTML = listTemplate;
+		this.rootEl.appendChild(this.list);
+
+	}
 
 
 
