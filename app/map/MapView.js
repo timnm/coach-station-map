@@ -18,7 +18,7 @@ export default class MapView {
 	}
 
 	addGoogleMap(postCode) {
-		this.gMap = new CoachMap(this.rootEl, postCode);
+		//this.gMap = new CoachMap(this.rootEl, postCode);
 	}
 
 	addStations(stations) {

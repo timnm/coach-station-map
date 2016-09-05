@@ -11,11 +11,29 @@ export default class ShellView {
 		this.rootEl.classList = 'shell o-grid o-grid--small-full o-grid--medium-full o-grid--large-fit o-grid--no-gutter';
 		parentEl.appendChild(this.rootEl);
 
+		this.leftColWrapper = document.createElement('div');
+		this.leftColWrapper.classList = 'left-col-wrapper o-grid__cell  o-grid__cell--width-20 o-grid__cell--width-100@small o-grid__cell--width-20@medium';
+
+		this.leftCol = document.createElement('div');
+		this.leftCol.classList = 'left-col o-grid  o-grid--wrap';
+		this.leftColWrapper.appendChild(this.leftCol);
+
+		this.titleWrapper = document.createElement('div');
+		this.titleWrapper.classList = 'title o-grid__cell o-grid__cell--width-100';
+		this.leftCol.appendChild(this.titleWrapper);
+
+		this.title = document.createElement('h1');
+		this.titleWrapper.appendChild(this.title);
+		this.title.textContent = 'Coach Station Finder';
+		this.title.classList = 'c-heading c-heading--large';
+
+		this.rootEl.appendChild(this.leftColWrapper);
+
 		this.controller = new ShellController(this);
 	}
 
 	addCoachListView() {
-		return new CoachListView(this.rootEl);
+		return new CoachListView(this.leftCol);
 	}
 
 	addMapView() {
