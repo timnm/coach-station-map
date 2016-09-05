@@ -25,35 +25,37 @@ export class DataService {
 
 			let url = API + 'postcode?postcode=' + postCode + '&distance=' + distance;
 
-			let data = JSON.parse(mockAjaxSuccess.responseText);
-			let stations = data.result;
+			// offline testing //
+//			let data = JSON.parse(mockAjaxSuccess.responseText);
+//			let stations = data.result;
+//			Utils.ARRAY_SORT_BY_NAME(stations);
+//			resolve(stations);
 
-			Utils.ARRAY_SORT_BY_NAME(stations);
+			let request = new XMLHttpRequest();
+			request.open('GET', url);
+			request.onload = function() {
+				if (request.status === 200) {
+					// parse the JSON //
+					let data = JSON.parse(request.responseText);
+					if(data.success) {
+						// sort the array alphabetically //
+						let stations = data.result;
+						Utils.ARRAY_SORT_BY_NAME(stations);
+						return resolve(stations);
+					} else {
+						return reject(new Error(API_ERROR));
+					}
 
-			resolve(stations);
+				} else {
+					return reject(new Error(API_ERROR));
+				}
+			};
 
-//			let request = new XMLHttpRequest();
-//			request.open('GET', url);
-//			request.onload = function() {
-//				if (request.status === 200) {
-//					let data = JSON.parse(request.responseText);
-//
-//					if(data.success) {
-//						resolve(data);
-//					} else {
-//						reject(new Error(API_ERROR));
-//					}
-//
-//				} else {
-//					reject(new Error(API_ERROR));
-//				}
-//			};
-//
-//			request.onerror = function() {
-//					reject(new Error('Network error'));
-//			};
-//
-//			request.send();
+			request.onerror = function() {
+					return reject(new Error('Network error'));
+			};
+
+			request.send();
 		});
 	}
 }
