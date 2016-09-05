@@ -12,7 +12,8 @@ export default class CoachListView {
 		parentEl.appendChild(this.rootEl);
 
 		this.title = document.createElement('h3');
-		this.title.textContent = 'The list';
+		this.title.classList = 'c-heading  c-heading--medium';
+		this.title.textContent = 'Stations';
 		this.rootEl.appendChild(this.title);
 
 		this.controller = new CoachListController(this);
@@ -24,11 +25,17 @@ export default class CoachListView {
 	addStations(_stations) {
 		this.stations = _stations;
 
-		let listTemplate = `${this.stations.map(station => `<li><a class="c-button c-button--primary c-button--ghost c-button--block c-button--medium" id="${station.nationalcoachcode}">${station.name}</a></li>`).join('\n      ')}`;
+		let listTemplate = `<ul>
+													${this.stations.map(station => `<li><a class="c-button c-button--primary c-button--ghost c-button--block c-button--medium" id="${station.nationalcoachcode}">${station.name}</a></li>`).join('\n      ')}
+												</ul>`;
 
-		this.list = document.createElement('ul');
-		this.list.innerHTML = listTemplate;
-		this.rootEl.appendChild(this.list);
+		this.panel = document.createElement('div');
+		this.panel.classList = 'o-panel-container';
+		let panelInner = document.createElement('div');
+				panelInner.classList = 'o-panel';
+				panelInner.innerHTML = listTemplate;
+		this.panel.appendChild(panelInner);
+		this.rootEl.appendChild(this.panel);
 
 		//this.list.addEventListener('click', this.onStationClick.bind(this), false);
 	}
