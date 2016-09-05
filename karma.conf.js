@@ -3,8 +3,6 @@ module.exports = function(config) {
 
 		singleRun: false,
 
-		browsers: ['Chrome'],
-
 		files: [
 			{ pattern: 'test-context.js', watched: false },
 		],
@@ -24,7 +22,17 @@ module.exports = function(config) {
 			watch: true
 		},
 
-		webpackServer: { noInfo: true }
+		webpackServer: { noInfo: true },
+
+
+		browsers: ['Chrome'],
+
+		customLaunchers: {
+      Chrome_DevTools_Saved_Prefs: {
+        base: 'Chrome',
+        flags: ['--user-data-dir=./tests/config/.chrome_dev_user']
+      }
+    }
 
 	});
 

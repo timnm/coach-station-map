@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --inline --hot",
     "build": "NODE_ENV=production webpack --config webpack-production.config.js -p",
-    "test": "karma start"
+    "test": "karma start --browsers Chrome_DevTools_Saved_Prefs"
   },
   "author": "Tim Myers",
   "license": "ISC",
