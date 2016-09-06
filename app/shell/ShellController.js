@@ -13,6 +13,10 @@ export default class ShellController {
 	init() {
 		this.listController = this.view.addCoachListView();
 		this.mapController = this.view.addMapView();
+		this.mapController.addGoogleMap(POST_CODE)
+		.catch((error)=> {
+			console.log(error);
+		});
 		this.getCoachStations();
 	}
 

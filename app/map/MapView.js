@@ -12,13 +12,16 @@ export default class MapView {
 		parentEl.appendChild(this.rootEl);
 
 		this.controller = new MapController(this);
-		this.controller.init();
-
 		return this.controller;
 	}
 
 	addGoogleMap(postCode) {
 		this.map = new CoachMap(this.rootEl, postCode);
+
+		return this.map.init()
+		.then((map)=> {
+			return this.map.initMap(map);
+		});
 	}
 
 	addStations(stations) {

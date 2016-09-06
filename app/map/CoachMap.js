@@ -1,5 +1,5 @@
 /*global google */
-import GoogleMap from '../common/GoogleMap';
+import {GoogleMap} from '../common/GoogleMap';
 
 export default class CoachMap extends GoogleMap {
 

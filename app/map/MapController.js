@@ -1,5 +1,3 @@
-import {POST_CODE} from '../core/config';
-
 export default class MapController {
 
 	constructor(view) {
@@ -8,12 +6,8 @@ export default class MapController {
 		this.view = view;
 	}
 
-	init() {
-		this.addGoogleMap();
-	}
-
-	addGoogleMap() {
-		this.view.addGoogleMap(POST_CODE);
+	addGoogleMap(postCode) {
+		return this.view.addGoogleMap(postCode);
 	}
 
 	addStations(stations) {
