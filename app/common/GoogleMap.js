@@ -1,6 +1,4 @@
 /*global google */
-const API = 'https://maps.googleapis.com/maps/api/js';
-
 export const MAP_API_ERROR = 'Map API Error';
 
 /**
@@ -14,8 +12,7 @@ export class GoogleMap {
 		this.parentEl = parentEl;
 		this.postCode = postCode;
 
-		console.log('GoogleMap', parentEl, postCode);
-
+		this.API = 'https://maps.googleapis.com/maps/api/js';
 	}
 
 
@@ -29,24 +26,27 @@ export class GoogleMap {
 			this.parentEl.appendChild(this.rootEl);
 
 			// Add the script tag to download the API //
-			let remoteSrc = API;
-			let remote = document.createElement('script');
+			let remoteSrc = this.API;
+			this.remote = document.createElement('script');
 
-					remote.onload = ()=> {
-						return resolve(this);
-					};
+			this.remote.onload = this.onScriptLoad.bind(this, resolve);
 
-					remote.onerror = ()=> {
-						return reject(MAP_API_ERROR);
-					};
+			this.remote.onerror = this.onScriptError.bind(this, reject);
 
-					remote.src = remoteSrc;
-					remote.setAttribute('async', true);
-					remote.setAttribute('defer', true);
+			this.remote.src = remoteSrc;
+			this.remote.setAttribute('async', true);
+			this.remote.setAttribute('defer', true);
 
-			document.body.appendChild(remote);
-
+			document.body.appendChild(this.remote);
 		});
+	}
+
+	onScriptLoad(resolve) {
+		return resolve(this);
+	}
+
+	onScriptError(reject) {
+		return reject(MAP_API_ERROR);
 	}
 
 
@@ -55,7 +55,7 @@ export class GoogleMap {
 		return new Promise((resolve, reject)=> {
 
 			// geocoder enables map from postcode, markers etc //
-			let geocoder = new google.maps.Geocoder();
+			this.geocoder = new google.maps.Geocoder();
 			let latlng = new google.maps.LatLng(0,0);
 			let mapOptions = {
 				zoom: 13,
@@ -90,14 +90,14 @@ export class GoogleMap {
 
 			};
 
-	// init the map //
+			// init the map //
 			this.map = new google.maps.Map(this.parentEl, mapOptions);
 
 			// center on postcode and add marker //
-			geocoder.geocode( { 'address': this.postCode}, (results, status) => {
+			this.geocoder.geocode( { 'address': this.postCode}, (results, status) => {
 				if (status == google.maps.GeocoderStatus.OK) {
 					this.map.setCenter(results[0].geometry.location);
-					console.log(results[0].geometry.location.lat);
+
 					let marker = new google.maps.Marker({
 							map: this.map,
 							label: 'I',
@@ -113,8 +113,7 @@ export class GoogleMap {
 
 					});
 
-					//return resolve(this.rootEl);
-					return reject(MAP_API_ERROR);
+					return resolve(this.rootEl);
 				} else {
 					return reject(MAP_API_ERROR);
 				}

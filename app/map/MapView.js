@@ -19,8 +19,8 @@ export default class MapView {
 		this.map = new CoachMap(this.rootEl, postCode);
 
 		return this.map.init()
-		.then((map)=> {
-			return this.map.initMap(map);
+		.then(()=> {
+			return this.map.initMap();
 		});
 	}
 
