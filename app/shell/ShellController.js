@@ -52,6 +52,7 @@ export default class ShellController {
 
 	onStationClick(evt) {
 		console.log(evt.target);
+		if(evt.target.nodeName !== 'A') return;
 		this.mapController.selectStation(evt.target.id);
 	}
 

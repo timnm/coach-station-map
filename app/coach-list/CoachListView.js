@@ -30,6 +30,23 @@ export default class CoachListView {
 		this.list = document.createElement('div');
 		this.list.innerHTML = listTemplate;
 		this.rootEl.appendChild(this.list);
+
+		this.rootEl.addEventListener('click', this.onStationClick.bind(this), false);
+	}
+
+
+	onStationClick(evt) {
+		evt.preventDefault();
+		if(evt.target.nodeName !== 'A') return;
+		let buttons = this.list.querySelectorAll('li a');
+
+		for(let i=0; i<buttons.length; i++) {
+			if(buttons[i] !== evt.target) {
+				buttons[i].classList.remove('selected');
+			} else {
+				evt.target.classList.add('selected');
+			}
+		}
 	}
 
 

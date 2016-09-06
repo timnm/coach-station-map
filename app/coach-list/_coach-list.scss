@@ -19,6 +19,10 @@
 			text-align: left;
 			text-indent: 0.2em;
 			color: black;
+
+			&.selected {
+				color: yellow;
+			}
 		}
 	}
 }
