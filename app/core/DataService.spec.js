@@ -1,5 +1,6 @@
 import {DataService, API, API_ERROR} from './DataService';
 import {POST_CODE, DISTANCE} from '../core/config';
+import Utils from '../common/Utils';
 
 import 'jasmine-ajax';
 
@@ -28,6 +29,24 @@ describe('MapService', () => {
     });
 
 
+		beforeEach(function() {
+			jasmine.addMatchers({
+				toBeSorted: function() {
+					return {
+						compare: function(actual) {
+							let expected = actual.slice();
+							Utils.ARRAY_SORT_BY_DISTANCE(expected);
+
+							return {
+								pass: jasmine.matchersUtil.equals(actual, expected)
+							};
+						}
+					};
+				}
+			});
+		});
+
+
 		it('should call the correct url', function() {
 
 			let url = 'https://data.gov.uk/data/api/service/transport/naptan_coach_stations/postcode?postcode=WC1E 7BL&distance=3';
@@ -47,6 +66,20 @@ describe('MapService', () => {
 
 			getCS.then((stations)=>{
 				expect(stations.length).toBeGreaterThan(0);
+				done();
+			});
+
+		});
+
+
+		it('should return a list of stations ordered by distance', function(done) {
+
+			var getCS = DataService.getCoachStations(POST_CODE, DISTANCE);
+
+			jasmine.Ajax.requests.mostRecent().respondWith(mockAjaxSuccess);
+
+			getCS.then((stations)=>{
+				expect(stations).toBeSorted();
 				done();
 			});
 
