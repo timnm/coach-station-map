@@ -1,5 +1,5 @@
 .coach-list {
-	min-height: 300px;
+	border-bottom: 1px solid #666;
 }
 
 .coach-list .c-heading {
@@ -18,10 +18,53 @@
 		.c-button {
 			text-align: left;
 			text-indent: 0.2em;
+			color: black;
 		}
 	}
 }
 
 .coach-list .o-panel-container {
-	min-height: 400px;
+	//min-height: 400px;
+}
+
+// large breakpoint //
+@media screen and (min-width: 64em) {
+
+	.coach-list {
+		position: absolute;
+		top: 14%;
+		left: 3%;
+		width: 20%;
+		max-width: 240px;
+		z-index: 99;
+		background: rgba(0, 0, 0, 0.7);
+		//background-color: rgba(221, 221, 221, 0.6);
+		border-radius: 5px;
+
+		.c-heading {
+			color: white;
+		}
+
+		ul {
+
+			margin: 0;
+
+			li .c-button {
+				color: white;
+			}
+		}
+	}
+}
+
+// med breakpoint //
+@media screen and (min-width: 48em) {
+	.coach-list {
+		border-bottom: none;
+	}
+}
+
+
+// small breakpoint //
+@media screen and (min-width: 30em) {
+
 }

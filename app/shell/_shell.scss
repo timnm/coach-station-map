@@ -12,9 +12,19 @@ body {
 
 
 .title {
-	//background: #DDD;
-	//color: white;
-	background-color: rgba(221, 221, 221, 0.5)
+	background-color: rgba(221, 221, 221, 0.6);
+	background-color: rgba(0, 0, 0, 0.7);
+	text-align: center;
+
+	.c-heading {
+		margin-left: 0.4em;
+		font-weight: bold;
+		color: white;
+	}
+}
+
+.left-col-wrapper {
+	background-color: rgba(221, 221, 221, 0.6);
 }
 
 // large breakpoint //
@@ -29,19 +39,21 @@ body {
 
 		.c-heading {
 			text-align: center;
-			font-weight: bold;
 			padding: 0.5em 0;
 		}
 	}
+
+	.left-col-wrapper {
+		flex: none;
+	}
+
 }
 
 // med breakpoint //
 @media screen and (min-width: 48em) {
-
+	.title {
+		text-align: left;
+	}
 }
 
-// small breakpoint //
-@media screen and (min-width: 30em) {
-
-}
 
