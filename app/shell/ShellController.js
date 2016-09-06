@@ -14,7 +14,7 @@ export default class ShellController {
 		this.listController = this.view.addCoachListView();
 		this.mapController = this.view.addMapView();
 		this.mapController.addGoogleMap(POST_CODE)
-		.catch((error)=> {
+		.catch(()=> {
 			this.googleMapError();
 		});
 		this.getCoachStations();
@@ -40,12 +40,12 @@ export default class ShellController {
 	}
 
 
-	coachStationsError(error) {
+	coachStationsError() {
 		this.view.displayCoachDataError('Could not fetch coach stations data');
 	}
 
 
-	googleMapError(error) {
+	googleMapError() {
 		this.view.displayCoachDataError('Could not fetch map');
 	}
 

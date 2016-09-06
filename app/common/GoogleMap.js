@@ -98,7 +98,7 @@ export class GoogleMap {
 				if (status == google.maps.GeocoderStatus.OK) {
 					this.map.setCenter(results[0].geometry.location);
 
-					let marker = new google.maps.Marker({
+					new google.maps.Marker({
 							map: this.map,
 							label: 'I',
 							title: this.postCode,
