@@ -33,12 +33,22 @@ export default class ShellView {
 		this.controller.init();
 	}
 
+
 	addCoachListView() {
 		return new CoachListView(this.leftCol);
 	}
 
+
 	addMapView() {
 		return new MapView(this.rootEl);
+	}
+
+
+	displayCoachDataError(error) {
+		this.error = document.createElement('div');
+		this.error.classList = 'c-alerts__alert c-alerts__alert--error cf';
+		this.error.textContent = error;
+		document.body.insertBefore(this.error, document.body.firstChild);
 	}
 
 }

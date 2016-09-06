@@ -28,25 +28,14 @@ export default class CoachListView {
 													${this.stations.map(station => `<li><a class="c-button c-button--primary c-button--ghost c-button--block c-button--medium" id="${station.nationalcoachcode}">${station.name}</a></li>`).join('\n      ')}
 												</ul>`;
 
-		this.panel = document.createElement('div');
-		this.panel.classList = 'o-panel-container';
-		let panelInner = document.createElement('div');
-				panelInner.classList = 'o-panel';
-				panelInner.innerHTML = listTemplate;
-		this.panel.appendChild(panelInner);
-		this.rootEl.appendChild(this.panel);
-
-		//this.list.addEventListener('click', this.onStationClick.bind(this), false);
+		this.list = document.createElement('div');
+		this.list.innerHTML = listTemplate;
+		this.rootEl.appendChild(this.list);
 	}
 
-	onStationClick(evt) {
-
-	}
 
 	listClickHandler(callBack) {
 		this.rootEl.addEventListener('click', callBack, false);
 	}
-
-
 
 }

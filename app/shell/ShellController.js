@@ -20,7 +20,8 @@ export default class ShellController {
 	getCoachStations() {
 		return DataService.getCoachStations(POST_CODE, DISTANCE)
 		.then((stations) => {
-			return this.gotCoachStations(stations);
+			//return this.gotCoachStations(stations);
+			return this.coachStationsError('someerrro');
 		})
 		.catch((error) => {
 			return this.coachStationsError(error);
@@ -37,7 +38,7 @@ export default class ShellController {
 
 
 	coachStationsError(error) {
-		console.log('coachStationsError', error);
+		this.view.displayCoachDataError('Could not fetch coach stations data');
 	}
 
 
