@@ -18,10 +18,14 @@ export default class MapView {
 	}
 
 	addGoogleMap(postCode) {
-		this.gMap = new CoachMap(this.rootEl, postCode);
+		this.map = new CoachMap(this.rootEl, postCode);
 	}
 
 	addStations(stations) {
-		this.gMap.addStations(stations);
+		this.map.addStations(stations);
+	}
+
+	selectStation(id) {
+		//this.map.selectStation(id);
 	}
 }

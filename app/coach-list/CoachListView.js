@@ -17,7 +17,6 @@ export default class CoachListView {
 		this.rootEl.appendChild(this.title);
 
 		this.controller = new CoachListController(this);
-		this.controller.init();
 
 		return this.controller;
 	}
@@ -42,6 +41,10 @@ export default class CoachListView {
 
 	onStationClick(evt) {
 
+	}
+
+	listClickHandler(callBack) {
+		this.rootEl.addEventListener('click', callBack, false);
 	}
 
 

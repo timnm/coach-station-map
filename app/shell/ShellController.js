@@ -31,7 +31,7 @@ export default class ShellController {
 	gotCoachStations(stations) {
 		console.log('gotCoachStations');
 		this.listController.addStations(stations);
-		this.listController.view.rootEl.addEventListener('click', this.onStationClick.bind(this), false);
+		this.listController.view.listClickHandler(this.onStationClick.bind(this));
 		this.mapController.addStations(stations);
 	}
 
@@ -43,6 +43,7 @@ export default class ShellController {
 
 	onStationClick(evt) {
 		console.log(evt.target);
+		this.mapController.selectStation(evt.target.id);
 	}
 
 

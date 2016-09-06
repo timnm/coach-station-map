@@ -20,4 +20,8 @@ export default class MapController {
 		this.view.addStations(stations);
 	}
 
+	selectStation(id) {
+		this.view.selectStation(id);
+	}
+
 }

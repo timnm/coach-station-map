@@ -11,41 +11,47 @@ export default class CoachMap extends GoogleMap {
 
 	addStations(stations) {
 
-		let gmaps = google.maps;
-		let geo = this.geocoder;
+		this.markers = {};
 
-		this.geocoder.geocode( { 'address': this.postCode}, (results, status) => {
+		for(let i=0; i<stations.length; i++) {
 
-			if (status == google.maps.GeocoderStatus.OK) {
+			let _lng = parseFloat(stations[i].latlong.coordinates[0]);
+			let _lat = parseFloat(stations[i].latlong.coordinates[1]);
 
-				this.map.setCenter(results[0].geometry.location);
-
-				for(let i=0; i<stations.length; i++) {
-					let pos = {lng:parseFloat(stations[i].latlong.coordinates[0].toFixed(3)), lat:parseFloat(stations[i].latlong.coordinates[1].toFixed(3))};
-					console.log(stations[i].name);
-
-					let marker = new google.maps.Marker({
-						map: this.map,
-						position: pos,
-						label: stations[i].name,
-						title: stations[i].name,
-						icon: {
-							path: google.maps.SymbolPath.CIRCLE,
-							fillColor: 'yellow',
-							fillOpacity: 1,
-							scale: 10,
-							strokeWeight: 1
-						}
-					});
+			let marker = new google.maps.Marker({
+				map: this.map,
+				position: {lng:_lng, lat:_lat},
+				label: stations[i].name,
+				title: stations[i].name,
+				icon: {
+					path: google.maps.SymbolPath.CIRCLE,
+					fillColor: '#eee',
+					fillOpacity: 0.8,
+					scale: 13,
+					strokeWeight: 2
 				}
+			});
 
-				google.maps.event.trigger(this.map, 'resize');
+			this.markers[stations[i].nationalcoachcode] = marker;
 
+			marker.setMap(this.map);
+		}
+	}
+
+	selectStation(id) {
+		console.log('cmap');
+		for(let marker in this.markers) {
+			if(marker === id) {
+				this.markers[marker].icon.fillColor = 'yellow';
+				this.markers[marker].setZIndex(999);
+				this.map.setCenter(this.markers[marker].position);
 			} else {
-				// errors //
-				alert('Could not add stations: ' + status);
+				this.markers[marker].icon.fillColor = '#eee';
+				this.markers[marker].setZIndex(500);
 			}
-		});
+
+			this.markers[marker].setMap(this.map);
+		}
 	}
 
 }
