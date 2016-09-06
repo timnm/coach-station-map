@@ -23,9 +23,6 @@
 	}
 }
 
-.coach-list .o-panel-container {
-	//min-height: 400px;
-}
 
 // large breakpoint //
 @media screen and (min-width: 64em) {
@@ -56,6 +53,7 @@
 	}
 }
 
+
 // med breakpoint //
 @media screen and (min-width: 48em) {
 	.coach-list {
@@ -63,8 +61,3 @@
 	}
 }
 
-
-// small breakpoint //
-@media screen and (min-width: 30em) {
-
-}

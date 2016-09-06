@@ -2,7 +2,6 @@
 import {GoogleMap, MAP_API_ERROR, API} from './GoogleMap';
 import {POST_CODE} from '../core/config';
 
-import 'jasmine-ajax';
 
 describe('GoogleMap', () => {
 

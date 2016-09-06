@@ -21,6 +21,7 @@ export default class CoachListView {
 		return this.controller;
 	}
 
+
 	addStations(_stations) {
 		this.stations = _stations;
 

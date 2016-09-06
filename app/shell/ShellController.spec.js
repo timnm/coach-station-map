@@ -44,11 +44,13 @@ describe('ShellController', ()=> {
 
 		let getCS = shellController.getCoachStations();
 
+		let error;
+
 		getCS
 		.then(()=> {
 			console.log('here');
 			expect(shellController.gotCoachStations).toHaveBeenCalled();
-		})
+		});
 
 	});
 
@@ -64,6 +66,9 @@ describe('ShellController', ()=> {
 		.then(()=> {
 			console.log('here');
 			expect(shellController.coachStationsError).toHaveBeenCalled();
+		})
+		.catch((error)=> {
+			error = error;
 		})
 
 	});
