@@ -18,12 +18,12 @@ export default class ShellController {
 
 
 	getCoachStations() {
-		DataService.getCoachStations(POST_CODE, DISTANCE)
+		return DataService.getCoachStations(POST_CODE, DISTANCE)
 		.then((stations) => {
-			this.gotCoachStations(stations);
+			return this.gotCoachStations(stations);
 		})
 		.catch((error) => {
-			this.coachStationsError(error);
+			return this.coachStationsError(error);
 		});
 	}
 
