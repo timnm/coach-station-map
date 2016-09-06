@@ -29,7 +29,7 @@ export class DataService {
 					if(data.success) {
 						// sort the array alphabetically //
 						let stations = data.result;
-						Utils.ARRAY_SORT_BY_NAME(stations);
+						Utils.ARRAY_SORT_BY_DISTANCE(stations);
 						return resolve(stations);
 					} else {
 						return reject(new Error(API_ERROR));

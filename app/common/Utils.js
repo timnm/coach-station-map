@@ -16,4 +16,19 @@ export default class Utils {
 		});
 	}
 
+
+	static ARRAY_SORT_BY_DISTANCE(_array) {
+		_array.sort((a, b) => {
+			if (a.distance > b.distance) {
+				return 1;
+			}
+
+			if (a.distance < b.distance) {
+				return -1;
+			}
+
+			// a must be equal to b
+			return 0;
+		});
+	}
 }
