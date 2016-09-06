@@ -1,7 +1,5 @@
 import CoachListController from './CoachListController';
 
-const STATION_CLICKED = 'CoachListController station clicked';
-
 export default class CoachListView {
 
 	constructor(parentEl) {
