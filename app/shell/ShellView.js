@@ -8,7 +8,7 @@ export default class ShellView {
 		console.log('ShellView', parentEl);
 
 		this.rootEl = document.createElement('div');
-		this.rootEl.classList = 'shell o-grid o-grid--small-full o-grid--medium-full o-grid--large-fit o-grid--no-gutter';
+		this.rootEl.classList = 'shell o-grid o-grid--small-full o-grid--medium-full o-grid--large-fit o-grid--no-gutter o-grid--top';
 		parentEl.appendChild(this.rootEl);
 
 		this.leftColWrapper = document.createElement('div');

@@ -23,6 +23,11 @@ body {
 	}
 }
 
+// grid - turn off flex //
+.o-grid {
+	display: block;
+}
+
 .left-col-wrapper {
 	background-color: rgba(221, 221, 221, 0.6);
 }
@@ -30,6 +35,18 @@ body {
 // errors //
 .c-alerts__alert--error {
 	z-index: 999;
+}
+
+// med breakpoint //
+@media screen and (min-width: 48em) {
+
+	.o-grid {
+		display: flex;
+	}
+
+	.title {
+		text-align: left;
+	}
 }
 
 // large breakpoint //
@@ -54,11 +71,9 @@ body {
 
 }
 
-// med breakpoint //
-@media screen and (min-width: 48em) {
-	.title {
-		text-align: left;
-	}
-}
+
+
+
+
 
 
