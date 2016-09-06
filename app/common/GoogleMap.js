@@ -64,7 +64,7 @@ export default class GoogleMap {
 					position: google.maps.ControlPosition.BOTTOM_CENTER
 			},
 
-};
+		};
 
 // init the map //
 		this.map = new google.maps.Map(parentEl, mapOptions);
@@ -77,10 +77,15 @@ export default class GoogleMap {
 				console.log(results[0].geometry.location.lat);
 				let marker = new google.maps.Marker({
 						map: this.map,
+						label: 'I',
+						title: postCode,
 						position: results[0].geometry.location,
 						 icon: {
 							path: google.maps.SymbolPath.CIRCLE,
-							scale: 10
+							scale: 14,
+							fillColor: '#33c5ff',
+							fillOpacity: 1,
+							strokeWeight: 4
 						},
 
 				});

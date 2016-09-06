@@ -26,6 +26,6 @@ export default class MapView {
 	}
 
 	selectStation(id) {
-		//this.map.selectStation(id);
+		this.map.selectStation(id);
 	}
 }
